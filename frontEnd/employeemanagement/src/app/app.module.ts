@@ -18,7 +18,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StudentService } from './service/student.service';
 
 @NgModule({
   declarations: [
@@ -41,10 +43,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, FormsModule,HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),StudentService
   ],
   bootstrap: [AppComponent]
 })
