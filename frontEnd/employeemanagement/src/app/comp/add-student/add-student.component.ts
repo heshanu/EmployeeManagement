@@ -39,4 +39,6 @@ export class AddStudentComponent {
         console.log(error);
       });
   }
+
+  
 }

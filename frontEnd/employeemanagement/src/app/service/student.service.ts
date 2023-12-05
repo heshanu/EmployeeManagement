@@ -28,5 +28,10 @@ export class StudentService {
     console.log("Student Service: ");
     return this.http.post(this.baseUrl+"/updateStudent",student);
   }
+
+  deleteStudent(id:any):Observable<any>{
+    console.log("Student Service delete:");
+    return this.http.delete(this.baseUrl+"/deleteStudent/"+`${id}`);
+  }
 }
 
