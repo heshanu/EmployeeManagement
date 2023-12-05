@@ -3,4 +3,11 @@
     <li>{{student.name}}</li>
     <li>{{student.email}}</li>
     <li>{{student.phoneNumber}}</li>
+    <mat-card-actions>
+        <a onclick="" [routerLink]="'updateStudent'"><button mat-raised-button color="primary" type="submit">Update</button></a>
+    </mat-card-actions>
+    
+    <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Delete</button>
+    </mat-card-actions>
 </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../service/student.service';
 import { Student } from '../../shared/interface/student';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,8 +10,8 @@ import { Student } from '../../shared/interface/student';
   templateUrl: './student-list.component.html',
   styleUrl: './student-list.component.css'
 })
-export class StudentListComponent implements OnInit{
-  constructor(private http: HttpClient, private studentService: StudentService) { }
+export class StudentListComponent implements OnInit {
+  constructor(private http: HttpClient,private route:ActivatedRoute, private studentService: StudentService) { }
   
   ngOnInit(): void {
     this.getStudents();
@@ -29,5 +30,8 @@ export class StudentListComponent implements OnInit{
     );
 
   }
+
+ 
+
 
 }

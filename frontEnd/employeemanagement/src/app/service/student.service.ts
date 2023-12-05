@@ -24,5 +24,9 @@ export class StudentService {
     return this.http.post(this.baseUrl+"/addStudent",student);
   }
 
+  updateStudent(student: Student | any) {
+    console.log("Student Service: ");
+    return this.http.post(this.baseUrl+"/updateStudent",student);
+  }
 }
 

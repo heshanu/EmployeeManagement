@@ -4,11 +4,14 @@ import { StudentListComponent } from './student/student-list/student-list.compon
 //import { CreateStudentComponent } from './student/create-student/create-student.component';
 import { NotFoundComponent } from './comp/not-found/not-found.component';
 import { AddStudentComponent } from './comp/add-student/add-student.component';
+import { UpdateformComponent } from './comp/updateform/updateform.component';
 
 const routes: Routes = [
   {path:"students",component:StudentListComponent},
   { path: "addStudent", component: AddStudentComponent },
-  { path: "", component:NotFoundComponent}
+  {path:"students/updateStudent",component:UpdateformComponent},
+  { path: "", component: NotFoundComponent },
+
 ];
 
 @NgModule({
