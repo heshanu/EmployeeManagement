@@ -20,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateformComponent } from './comp/updateform/updateform.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     StudentListComponent,
     NotFoundComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    UpdateformComponent,
+
   ],
   imports: [
     BrowserModule,

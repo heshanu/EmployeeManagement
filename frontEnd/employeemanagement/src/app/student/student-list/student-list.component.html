@@ -1,6 +1,13 @@
 <p>student-list works!</p>
-<div *ngFor="let student of studentList">
+<div *ngFor="let student of studentList">  
     <li>{{student.name}}</li>
     <li>{{student.email}}</li>
     <li>{{student.phoneNumber}}</li>
+    <mat-card-actions>
+        <a [routerLink]="'updateStudent'"><button mat-raised-button color="primary" type="submit">Update</button></a>
+    </mat-card-actions>
+    
+    <mat-card-actions>
+        <button onclick="deleteStudent(student.id)" mat-raised-button color="danger" type="submit">Delete</button>
+    </mat-card-actions>
 </div>
