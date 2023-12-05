@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import com.AngularSpring.WebAPPEmployeeManagement.utils.constant.StudentConstant;
 
@@ -34,8 +31,7 @@ public class StudentServiceImpl implements StudentService {
 
         return new ArrayList<>();
     }
-    @Override
-    public ResponseEntity<String> addNewStudent(Map<String, String> requestMap) {
+    @Override public ResponseEntity<String> addNewStudent(Map<String, String> requestMap){
         try{
             if(validateProductMap(requestMap,false)){
                 Student st=getProductFromMap(requestMap,false);
@@ -53,6 +49,47 @@ public class StudentServiceImpl implements StudentService {
             e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    public ResponseEntity<String> updateStudent(Map<String, String> requestMap) {
+        int studentId=Integer.parseInt(requestMap.get("id"));
+        Student st=studentRepo.findById(studentId).orElse(null);
+        if(st!=null){
+            st.setName(requestMap.get("name"));
+            st.setEmail(requestMap.get("email"));
+            st.setPhoneNumber(requestMap.get("phoneNumber"));
+        }
+        this.studentRepo.save(st);
+        return new ResponseEntity<>("Student Updated Successfully", HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<String> deleteStudent(Integer Id) {
+        try{
+            Optional<Student> optional=studentRepo.findById(Id);
+            if(!optional.isEmpty()){
+                studentRepo.deleteById(Id);
+                return new ResponseEntity<>("Student Deleted Successfully", HttpStatus.OK);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Student getStudentById(Integer id) {
+        try{
+            Optional<Student> optional=studentRepo.findById(id);
+            if(!optional.isEmpty()){
+                return optional.get();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new Student();
     }
 
     private boolean validateProductMap(Map<String, String> requestMap, boolean isValid) {
@@ -74,6 +111,5 @@ public class StudentServiceImpl implements StudentService {
         student.setPhoneNumber(requestMap.get("phoneNumber"));
         return student;
     }
-
 
 }
