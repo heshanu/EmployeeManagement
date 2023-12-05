@@ -26,6 +26,7 @@ export class AddStudentComponent {
   onSubmit(): void {
     if (this.addressForm.valid) { 
       console.log('Form Submitted!');
+      this.addUser();
     }
   }
 

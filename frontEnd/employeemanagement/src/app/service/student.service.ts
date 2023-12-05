@@ -23,9 +23,12 @@ export class StudentService {
     return this.http.get<Student[]>(this.baseUrl);
   }
   
-  addStudent(student:Student |any){
+  addStudent(student: Student | any) {
+    console.log("Student Service: ");
     return this.http.post(this.baseUrl,student);
   }
+
+  
   
 }
 
