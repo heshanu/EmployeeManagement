@@ -5,13 +5,12 @@ import com.AngularSpring.WebAPPEmployeeManagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.AngularSpring.WebAPPEmployeeManagement.utils.constant.StudentConstant;
 @RestController
 @CrossOrigin(origins = StudentConstant.CROSS_ORIGIN)
@@ -35,4 +34,14 @@ public class StudentController {
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping("/addStudent")
+    ResponseEntity<String> addNewProduct(@RequestBody Map<String, String> requestMap){
+        try{
+            return studentService.addNewStudent(requestMap);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Something went wrong",HttpStatus.BAD_REQUEST);
+    }
 }

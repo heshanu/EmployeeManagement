@@ -21,12 +21,8 @@ export class StudentService {
   
   addStudent(student: Student | any) {
     console.log("Student Service: ");
-    return this.http.post(this.baseUrl,student);
+    return this.http.post(this.baseUrl+"/addStudent",student);
   }
 
-
-
-  
-  
 }
 

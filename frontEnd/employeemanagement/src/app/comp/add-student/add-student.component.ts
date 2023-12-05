@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { StudentService } from '../../service/student.service';
 import { ActivatedRoute } from '@angular/router';
 import { Student } from '../../shared/interface/student';
+import { error } from 'node:console';
 
 
 @Component({
@@ -33,7 +34,9 @@ export class AddStudentComponent {
   addUser(): void {
     this.studentService.addStudent(this.addressForm.value)
       .subscribe((student:Student|any) => {
-        console.log("Student Added, ", student);
+        console.log("Student Added", student);
+      }, error => { 
+        console.log(error);
       });
   }
 }
