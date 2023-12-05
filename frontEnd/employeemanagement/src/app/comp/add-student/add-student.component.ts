@@ -15,7 +15,7 @@ export class AddStudentComponent {
   
   private fb = inject(FormBuilder);
   addressForm= this.fb.group({
-    id:null,
+    id:null|number,
     name: [null, Validators.required],
     email: [null, Validators.required],
     phoneNumber: [null, Validators.required]

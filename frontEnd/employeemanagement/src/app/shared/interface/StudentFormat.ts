@@ -1,5 +1,5 @@
 export class StudentFormat {
-    id!: number|null;
+    id!: number|null|undefined;
     email!: string|null;
     name!: string|null;
     phoneNumber!:String|null;
