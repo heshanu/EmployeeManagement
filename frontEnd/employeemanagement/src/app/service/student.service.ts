@@ -11,22 +11,20 @@ export class StudentService {
 
   constructor(private http:HttpClient,private route:ActivatedRoute) { }
 
-  //baseUrl = "http://localhost:8080/api/v1/students";
-  baseUrl = "";
+  baseUrl = "http://localhost:8080/api/v1/students";
+  
   studentFormat!: Student;
+
   getStudents(): Observable<Student[]>{
-    fetch("http://localhost:8080/api/v1/students").then(
-      (data)=>{
-        console.log(data);
-      }
-    );
-    return this.http.get<Student[]>(this.baseUrl);
+    return this.http.get<Student[]>(this.baseUrl+"/all");
   }
   
   addStudent(student: Student | any) {
     console.log("Student Service: ");
     return this.http.post(this.baseUrl,student);
   }
+
+
 
   
   
