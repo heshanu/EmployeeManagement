@@ -1,6 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
+import { StudentService } from '../../service/student.service';
+import { ActivatedRoute } from '@angular/router';
+import { Student } from '../../shared/interface/student';
 
 
 @Component({
@@ -17,9 +21,18 @@ export class AddStudentComponent {
     phoneNumber: [null, Validators.required]
   });
 
+  constructor(private studentService:StudentService,private route:ActivatedRoute) { }
+
   onSubmit(): void {
     if (this.addressForm.valid) { 
       console.log('Form Submitted!');
     }
+  }
+
+  addUser(): void {
+    this.studentService.addStudent(this.addressForm.value)
+      .subscribe((student:Student|any) => {
+        console.log("Student Added, ", student);
+      });
   }
 }
